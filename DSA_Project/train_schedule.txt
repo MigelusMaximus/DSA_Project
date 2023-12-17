@@ -1,0 +1,8 @@
+TrainID,DepartureStation,ArrivalStation,DepartureTime,ArrivalTime
+0001,Praha,Brno,08:30,10:45
+0002,Brno,Ostrava,09:15,11:30
+0004,Ostrava,Praha,12:00,14:40
+0005,Plzen,Brno,13:30,16:00
+0006,Liberec,Ceske Budejovice,15:30,18:45
+0003,Alicante,Brno,14:00,24:00
+0008,Praha,Brno,19:30,20:45
