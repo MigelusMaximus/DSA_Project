@@ -62,6 +62,8 @@ TrainSchedule* DoubleLinkedList::findTrainSchedule(const std::string& trainID) c
 }
 
 
+
+
 //Zobrazenie vsetkych spojov
 void DoubleLinkedList::displayAllSchedules(const std::vector<std::string>& columns) const {
     TrainSchedule* current = head;
@@ -89,6 +91,27 @@ void DoubleLinkedList::displayAllSchedules(const std::vector<std::string>& colum
     }
 }
 
+
+//Metoda ktora je na displaynutie/printnutie vsetkych spjov
+void DoubleLinkedList::print() {
+    TrainSchedule* current = head;
+
+    while (current != nullptr) {
+
+        std::cout
+            << "\n"
+            << "Train ID: " << current->trainID << "\n"
+            << "Departure Station: " << current->departureStation << "\n"
+            << "Arrival Station: " << current->arrivalStation << "\n"
+            << "Departure Time: " << current->departureTime << "\n"
+            << "Arrival Time: " << current->arrivalTime << "\n" << std::endl;
+
+        current = current->next;
+    }
+}
+
+
+//Metoda ktora mi najde vsetky spoje, ktore maju danu stanicu od-do
 std::vector<TrainSchedule*> DoubleLinkedList::find(const std::string& departureStation, const std::string& arrivalStation) const {
     std::vector<TrainSchedule*> foundSchedules;
     TrainSchedule* current = head;
@@ -102,6 +125,31 @@ std::vector<TrainSchedule*> DoubleLinkedList::find(const std::string& departureS
 
     return foundSchedules;
 }
+
+//Metoda ktora vdaka bool hodnote pre man bude riesit bud vsetky spoje odchodzie zo stanice, alebo prichodzie do stanice
+std::vector<TrainSchedule*> DoubleLinkedList::find(const std::string& station,bool flag) const {
+    std::vector<TrainSchedule*> foundSchedules;
+    TrainSchedule* current = head;
+
+    while (current != nullptr) {
+        if (flag) {
+            if (current->departureStation == station) {
+                foundSchedules.push_back(current);
+            }
+            
+        }
+        else {
+            if (current->arrivalStation == station) {
+                foundSchedules.push_back(current);
+            }
+        }
+
+        current = current->next;
+    }
+
+    return foundSchedules;
+}
+
 
 //Metoda na nacitanie dat z textaku
 void DoubleLinkedList::loadSchedulesFromFile(const std::string& filename) {
